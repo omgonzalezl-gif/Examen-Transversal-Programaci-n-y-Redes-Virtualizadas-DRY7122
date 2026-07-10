@@ -1,0 +1,174 @@
+Building configuration...
+
+Current configuration : 3509 bytes
+!
+! Last configuration change at 01:17:32 UTC Fri Jul 10 2026 by NETCONF
+!
+version 16.9
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname OMAR-MISAEL
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name lab.local
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-653154356
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-653154356
+ revocation-check none
+ rsakeypair TP-self-signed-653154356
+!
+!
+crypto pki certificate chain TP-self-signed-653154356
+ certificate self-signed 01
+  3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 36353331 35343335 36301E17 0D323630 37313030 30313831 
+  385A170D 33303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3635 33313534 
+  33353630 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02 
+  82010100 B988139F 99A5305A 72C4121F 39FAD59F 36F9792C 2E77BF19 8378AF16 
+  AB969A45 6F60DD41 68B43D09 E9C0E2F6 1605658B FB4ACE51 AADBD9F5 63DF2434 
+  C6216166 E2C8E45E 035588F3 6D57A302 3EAA7402 9C2C9732 4D8946C3 35DF7166 
+  C5F99ACD B3A84464 B89DF708 C2E21AFB 522A2527 E86AAB88 4AD26F37 654BB532 
+  852DC131 FED7E50D 4E7C195E AA3AAD2D 8CCF5667 036D921E 6604581F C5C302DE 
+  673F2106 A99CFAD5 D6CAEBA2 7ABC21E0 0D21A561 F0842460 476D8B27 BEEDCF42 
+  9B4E9F23 67BD3428 86016781 297DA8F3 28731FA9 1DEE10E5 CDE5C3B4 BC9A6469 
+  66CEC9E2 BC70DAFA 2411A50C 9DDBB995 2DBE8A35 86F667BB 692408DE 1331EFC0 
+  FFFFE1E9 02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F 
+  0603551D 23041830 168014C6 AE75183B 169A3173 6C3F63B5 E0BD5AC5 89E29830 
+  1D060355 1D0E0416 0414C6AE 75183B16 9A31736C 3F63B5E0 BD5AC589 E298300D 
+  06092A86 4886F70D 01010505 00038201 0100B6A2 F471A43C A511D175 4D7F6319 
+  5A2B1784 856B8D76 54D22F01 A0C028CC CF6E6C58 D434FBAB 82A42244 EB76FE1F 
+  4E52D0A7 2B42A0F8 8013E36F 2540B685 275BCC2F 05EAB152 C7F1B883 414C945E 
+  938B1435 75202A8A E67E9B05 64F35ED3 D0C34A07 26137BFB 549EBED5 18CC42F4 
+  C22FF2E4 A54191E3 4ECB3FDC ABB0A01F 393CB5C0 E6FF0872 31E990EE C3AB2A1D 
+  82F3C038 57BE77CA 6CCE5912 E6C83803 86952ED0 8970289A 71D75A75 47AEDD29 
+  7A4A2798 4ABB018B CCCC8193 18D30C3B 323CF888 718210EB 89955D8D E2438DBB 
+  68087737 13139AED 63B96C87 32E5A0B8 4FFB86B5 F0242D4D 29783730 6499B86F 
+  90B3409B 597496A2 8CE528C8 3CD52FFD D6CF
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9IYA52CBTEN
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+netconf-yang
+!
+restconf
+!
+username cisco privilege 15 secret 5 $1$PFla$ERTKi9uCGjv.t02diBG6f0
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback22
+ description Loopback creada desde Postman RESTCONF
+ ip address 22.22.22.22 255.255.255.255
+ shutdown
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+no ip http server
+ip http secure-server
+ip http client source-interface GigabitEthernet1
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+!
+!
+!
+!
+end
